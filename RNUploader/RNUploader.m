@@ -3,14 +3,17 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <UIKit/UIKit.h>
 
-#if __has_include("RCTBridgeModule.h")
-    #import "RCTBridgeModule.h"
-#else
+#if __has_include(<React/RCTBridgeModule.h>)
     #import <React/RCTBridgeModule.h>
+    #import <React/RCTEventDispatcher.h>
+    #import <React/RCTLog.h>
+#else
+    #import "RCTBridgeModule.h"
+    #import "RCTEventDispatcher.h"
+    #import "RCTLog.h"
 #endif
 
-#import "RCTEventDispatcher.h"
-#import "RCTLog.h"
+
 
 @interface RNUploader : NSObject <RCTBridgeModule, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
     @property NSMutableData *responseData;
